@@ -3,58 +3,43 @@
     <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
       <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-opacity="0.12"/>
     </filter>
-    <linearGradient id="gradGreen" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#6aa84f;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#4d8a37;stop-opacity:1" />
-    </linearGradient>
   </defs>
   
   <!-- Fondo limpio -->
   <rect width="120" height="120" rx="18" fill="#fbfbf8" stroke="#e8e8e4" stroke-width="1"/>
   
-  <!-- ARISTAS (conexiones entre nodos) — primero para quedar atrás -->
-  <g stroke="#d4e5c4" stroke-width="1.6" stroke-linecap="round" opacity="0.8">
-    <!-- Red distribuida (no solo hacia centro) -->
-    <!-- Triángulo superior -->
-    <line x1="30" y1="32" x2="90" y2="28"/>
-    <line x1="90" y1="28" x2="70" y2="65"/>
-    <line x1="70" y1="65" x2="30" y2="32"/>
+  <!-- Concepto: raíces/rizoma que se ramifican (heterogéneo, sin jerarquía) -->
+  <!-- Raíz principal (diagonal, dinámica) -->
+  <g filter="url(#shadow)">
+    <!-- Tronco central -->
+    <path d="M 60 20 Q 62 45, 60 70" stroke="#6aa84f" stroke-width="3.5" fill="none" stroke-linecap="round"/>
     
-    <!-- Conexiones laterales -->
-    <line x1="30" y1="32" x2="18" y2="60"/>
-    <line x1="18" y1="60" x2="40" y2="92"/>
-    <line x1="40" y1="92" x2="70" y2="65"/>
+    <!-- Ramificación izquierda superior -->
+    <path d="M 60 35 Q 40 35, 28 30" stroke="#9bd655" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.9"/>
     
-    <!-- Conexiones derechas -->
-    <line x1="90" y1="28" x2="100" y2="58"/>
-    <line x1="100" y1="58" x2="75" y2="95"/>
-    <line x1="75" y1="95" x2="40" y2="92"/>
+    <!-- Ramificación derecha superior -->
+    <path d="M 60 40 Q 75 38, 90 32" stroke="#c9e5b1" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.85"/>
     
-    <!-- Arista roja: conectada a la red (entre nodos laterales) -->
-    <line x1="18" y1="60" x2="100" y2="58" stroke="#d65a6f" stroke-width="1.8" opacity="0.7"/>
+    <!-- Ramificación izquierda media -->
+    <path d="M 60 55 Q 35 60, 22 70" stroke="#8fb862" stroke-width="2.8" fill="none" stroke-linecap="round" opacity="0.88"/>
+    
+    <!-- Ramificación derecha media -->
+    <path d="M 60 60 Q 80 65, 98 75" stroke="#b8d88f" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.85"/>
+    
+    <!-- Ramificación izquierda inferior (roja - acento rebelde) -->
+    <path d="M 60 75 Q 38 85, 25 98" stroke="#e74c5c" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.88"/>
+    
+    <!-- Ramificación derecha inferior -->
+    <path d="M 60 78 Q 78 88, 95 102" stroke="#9bd655" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.86"/>
   </g>
   
-  <!-- NODOS (círculos) — encima de las aristas, con filter shadow -->
-  <g filter="url(#shadow)">
-    <!-- Nodo superior izquierdo -->
-    <circle cx="30" cy="32" r="5" fill="#9bd655" stroke="#7a9c45" stroke-width="0.8" opacity="0.92"/>
-    
-    <!-- Nodo superior derecho -->
-    <circle cx="90" cy="28" r="5.5" fill="url(#gradGreen)" stroke="#3d6a28" stroke-width="1" opacity="0.95"/>
-    
-    <!-- Nodo central-derecha (más prominente, verde intenso) -->
-    <circle cx="70" cy="65" r="6" fill="url(#gradGreen)" stroke="#3d6a28" stroke-width="1"/>
-    
-    <!-- Nodo izquierda (rojo - conectado a la red) -->
-    <circle cx="18" cy="60" r="4.5" fill="#d65a6f" stroke="#a84555" stroke-width="0.8" opacity="0.9"/>
-    
-    <!-- Nodo inferior izquierdo -->
-    <circle cx="40" cy="92" r="5" fill="#c9e5b1" stroke="#a8c89f" stroke-width="0.8" opacity="0.88"/>
-    
-    <!-- Nodo inferior derecha -->
-    <circle cx="75" cy="95" r="4.5" fill="#b8d88f" stroke="#8fa870" stroke-width="0.8" opacity="0.85"/>
-    
-    <!-- Nodo derecha (rojo - conectado) -->
-    <circle cx="100" cy="58" r="5" fill="#e74c5c" stroke="#c5354a" stroke-width="0.8" opacity="0.88"/>
+  <!-- Puntos/nodos en las puntas de las ramificaciones (pequeños círculos) -->
+  <g fill="#6aa84f" filter="url(#shadow)">
+    <circle cx="28" cy="30" r="2.5" fill="#9bd655" opacity="0.95"/>
+    <circle cx="90" cy="32" r="2.5" fill="#c9e5b1" opacity="0.88"/>
+    <circle cx="22" cy="70" r="2.5" fill="#8fb862" opacity="0.9"/>
+    <circle cx="98" cy="75" r="2.5" fill="#b8d88f" opacity="0.86"/>
+    <circle cx="25" cy="98" r="2.5" fill="#e74c5c" opacity="0.92"/>
+    <circle cx="95" cy="102" r="2.5" fill="#9bd655" opacity="0.88"/>
   </g>
 </svg>
