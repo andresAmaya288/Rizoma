@@ -1,39 +1,49 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
   <defs>
-    <style>
-      @keyframes pulse {
-        0%, 100% { opacity: 0.6; }
-        50% { opacity: 1; }
-      }
-      .dot { animation: pulse 3s ease-in-out infinite; }
-    </style>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-opacity="0.15"/>
+    </filter>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6aa84f;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4d8a37;stop-opacity:1" />
+    </linearGradient>
   </defs>
-  <rect width="120" height="120" rx="20" fill="#fbfbf8" stroke="#6aa84f" stroke-width="1.5"/>
   
-  <!-- Red rizomática: nodos y conexiones -->
-  <!-- Centro: nodo principal -->
-  <circle cx="60" cy="60" r="7" fill="#6aa84f"/>
+  <!-- Fondo limpio -->
+  <rect width="120" height="120" rx="18" fill="#fbfbf8" stroke="#e8e8e4" stroke-width="1"/>
   
-  <!-- Nodos secundarios (heterogéneos, sin jerarquía) -->
-  <circle cx="35" cy="40" r="5" fill="#c9e5b1" opacity="0.8"/>
-  <circle cx="85" cy="35" r="5.5" fill="#9bd655" opacity="0.85"/>
-  <circle cx="25" cy="65" r="4.5" fill="#6aa84f" opacity="0.7"/>
-  <circle cx="95" cy="70" r="5" fill="#c9e5b1" opacity="0.8"/>
-  <circle cx="50" cy="90" r="5.5" fill="#9bd655" opacity="0.85"/>
-  <circle cx="75" cy="85" r="4.5" fill="#6aa84f" opacity="0.75"/>
+  <!-- Aristas (conexiones) — primero para quedar atrás -->
+  <g stroke="#d4e5c4" stroke-width="1.8" stroke-linecap="round" opacity="0.85">
+    <line x1="60" y1="60" x2="32" y2="38"/>
+    <line x1="60" y1="60" x2="88" y2="32"/>
+    <line x1="60" y1="60" x2="20" y2="62"/>
+    <line x1="60" y1="60" x2="100" y2="68"/>
+    <line x1="60" y1="60" x2="45" y2="90"/>
+    <line x1="60" y1="60" x2="80" y2="88"/>
+    <!-- Conexiones secundarias (más sutiles) -->
+    <line x1="32" y1="38" x2="80" y2="88" stroke="#e8e8e4" stroke-width="1" opacity="0.5"/>
+    <line x1="88" y1="32" x2="45" y2="90" stroke="#e8e8e4" stroke-width="1" opacity="0.5"/>
+  </g>
   
-  <!-- Líneas de conexión (rizomáticas, sin jerarquía) -->
-  <line x1="60" y1="60" x2="35" y2="40" stroke="#c9e5b1" stroke-width="1.5" opacity="0.6"/>
-  <line x1="60" y1="60" x2="85" y2="35" stroke="#9bd655" stroke-width="1.5" opacity="0.6"/>
-  <line x1="60" y1="60" x2="25" y2="65" stroke="#c9e5b1" stroke-width="1.5" opacity="0.6"/>
-  <line x1="60" y1="60" x2="95" y2="70" stroke="#9bd655" stroke-width="1.5" opacity="0.6"/>
-  <line x1="60" y1="60" x2="50" y2="90" stroke="#c9e5b1" stroke-width="1.5" opacity="0.6"/>
-  <line x1="60" y1="60" x2="75" y2="85" stroke="#9bd655" stroke-width="1.5" opacity="0.6"/>
+  <!-- Nodos (círculos) — encima de las aristas -->
+  <g filter="url(#shadow)">
+    <!-- Centro principal: más prominente -->
+    <circle cx="60" cy="60" r="6.5" fill="url(#grad1)" stroke="#3d6a28" stroke-width="1"/>
+    
+    <!-- Nodos secundarios: heterogéneos en tamaño y tonalidad -->
+    <circle cx="32" cy="38" r="4.5" fill="#9bd655" stroke="#7a9c45" stroke-width="0.8" opacity="0.95"/>
+    <circle cx="88" cy="32" r="5" fill="#c9e5b1" stroke="#a8c89f" stroke-width="0.8" opacity="0.9"/>
+    <circle cx="20" cy="62" r="4" fill="#b8d88f" stroke="#8fa870" stroke-width="0.8" opacity="0.85"/>
+    <circle cx="100" cy="68" r="4.5" fill="#9bd655" stroke="#7a9c45" stroke-width="0.8" opacity="0.9"/>
+    <circle cx="45" cy="90" r="5.5" fill="#c9e5b1" stroke="#a8c89f" stroke-width="0.8" opacity="0.95"/>
+    <circle cx="80" cy="88" r="4.5" fill="#8fb862" stroke="#6f9445" stroke-width="0.8" opacity="0.9"/>
+  </g>
   
-  <!-- Conexiones secundarias (red más compleja) -->
-  <line x1="35" y1="40" x2="50" y2="90" stroke="#f0f0f0" stroke-width="0.8" opacity="0.4"/>
-  <line x1="85" y1="35" x2="75" y2="85" stroke="#f0f0f0" stroke-width="0.8" opacity="0.4"/>
+  <!-- Acento rebelde: línea diagonal dinámica -->
+  <g stroke="#e74c5c" stroke-width="2.2" stroke-linecap="round" opacity="0.72">
+    <line x1="15" y1="102" x2="38" y2="78" />
+  </g>
   
-  <!-- Acento rebelde: línea diagonal -->
-  <line x1="15" y1="100" x2="35" y2="80" stroke="#ff5c7a" stroke-width="2" opacity="0.6"/>
+  <!-- Pequeño detalle: punto de energía -->
+  <circle cx="38" cy="78" r="2" fill="#e74c5c" opacity="0.6"/>
 </svg>
