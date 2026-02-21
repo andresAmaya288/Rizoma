@@ -2,7 +2,7 @@
   --bg:#fbfbf8;
   --card:#ffffff;
   --muted:#6b6b6b;
-  --accent:#ff5c7a; /* toque rebelde */
+  --accent:#ff5c7a; 
   --green:#6aa84f;
   --container-width:1100px;
   --radius:12px;
@@ -27,6 +27,7 @@ body{font-family:var(--sans);margin:0;background:var(--bg);color:#222;line-heigh
 .hero-art img{width:320px;max-width:40vw;border-radius:18px;box-shadow:var(--shadow)}
 .section{padding:2.5rem 0}
 .about p.muted{margin-top:0;color:var(--muted)}
+.about-text p{line-height:1.7;color:#444;margin-bottom:1rem}
 .placeholder{background:linear-gradient(90deg,#fff7f8,#f9fff7);padding:0.6rem;border-left:4px solid var(--accent);border-radius:8px}
 .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem;margin-top:1rem}
 .card{background:var(--card);padding:1rem;border-radius:var(--radius);box-shadow:var(--shadow);display:flex;flex-direction:column;gap:0.6rem}
@@ -36,6 +37,8 @@ body{font-family:var(--sans);margin:0;background:var(--bg);color:#222;line-heigh
 .post img{width:120px;height:80px;object-fit:cover;border-radius:8px}
 .post-body h4{margin:0 0 0.4rem}
 .read-more{display:inline-block;margin-top:0.6rem;color:var(--accent);text-decoration:none;font-weight:700}
+.social-link{color:var(--accent);text-decoration:none;font-weight:600;transition:opacity 0.2s}
+.social-link:hover{opacity:0.75}
 .site-footer{border-top:1px solid rgba(0,0,0,0.04);padding:1.2rem 0;background:transparent}
 .footer-inner{display:flex;justify-content:space-between;align-items:center}
 .muted{color:var(--muted)}
