@@ -81,6 +81,17 @@ body{font-family:var(--sans);margin:0;background:var(--bg);color:#222;line-heigh
 .reset-btn{background:var(--green);color:#fff;border:none;padding:0.8rem 1.5rem;border-radius:6px;cursor:pointer;font-weight:600;transition:all 0.2s;margin-top:1rem}
 .reset-btn:hover{background:#5a8a40}
 
+.artist-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2rem;margin-top:2rem}
+.artist-card{background:#fafaf9;border-radius:var(--radius);box-shadow:var(--shadow);padding:1.5rem;text-align:center}
+.artist-card h3{margin:0 0 0.8rem;color:var(--accent)}
+.artist-card p{color:#444;margin-bottom:1rem}
+.artist-photos{display:flex;justify-content:center;gap:1rem;margin-bottom:1rem}
+.artist-photo{width:120px;height:120px;object-fit:cover;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.07);cursor:pointer;transition:box-shadow 0.2s}
+.artist-photo:hover{box-shadow:0 4px 16px rgba(255,92,122,0.15)}
+.playlist-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:2rem;margin-top:2rem}
+.playlist-card{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:1rem;text-align:center}
+.playlist-card h4{margin:0 0 1rem;color:var(--green)}
+
 @media(max-width:880px){
   .hero-inner{flex-direction:column-reverse;text-align:center}
   .hero-art img{max-width:80vw}

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Artistas en vivo — Rizoma</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <a href="index.html" style="display:flex;align-items:center;gap:0.6rem;text-decoration:none;">
+          <img src="assets/logo.svg" alt="Rizoma logo" class="logo" />
+          <h1 class="site-title">Rizoma</h1>
+        </a>
+      </div>
+      <nav class="nav">
+        <a href="index.html#about">Quiénes somos</a>
+        <a href="index.html#fiesta">La fiesta</a>
+        <a href="camisetas.html">Camisetas</a>
+        <a href="index.html#news">Novedades</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" style="background:linear-gradient(180deg, rgba(106,168,79,0.06), transparent);">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h2>Música en vivo</h2>
+          <p class="lead">Descubre los artistas del evento y escucha la playlist de Rizoma.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section artistas">
+      <div class="container">
+        <div class="artist-grid">
+          <div class="artist-card" id="artista1">
+            <h3>Artista 1</h3>
+            <p>PLACEHOLDER: Descripción breve del artista 1. Género, trayectoria, estilo.</p>
+            <div class="artist-photos">
+              <img src="assets/hero-1.svg" alt="Artista 1 foto 1" class="artist-photo" onclick="swapArtistPhoto('artista1', 0)">
+              <img src="assets/hero-1.svg" alt="Artista 1 foto 2" class="artist-photo" style="display:none;" onclick="swapArtistPhoto('artista1', 1)">
+            </div>
+          </div>
+          <div class="artist-card" id="artista2">
+            <h3>Artista 2</h3>
+            <p>PLACEHOLDER: Descripción breve del artista 2. Género, trayectoria, estilo.</p>
+            <div class="artist-photos">
+              <img src="assets/hero-1.svg" alt="Artista 2 foto 1" class="artist-photo" onclick="swapArtistPhoto('artista2', 0)">
+              <img src="assets/hero-1.svg" alt="Artista 2 foto 2" class="artist-photo" style="display:none;" onclick="swapArtistPhoto('artista2', 1)">
+            </div>
+          </div>
+          <div class="artist-card" id="artista3">
+            <h3>Artista 3</h3>
+            <p>PLACEHOLDER: Descripción breve del artista 3. Género, trayectoria, estilo.</p>
+            <div class="artist-photos">
+              <img src="assets/hero-1.svg" alt="Artista 3 foto 1" class="artist-photo" onclick="swapArtistPhoto('artista3', 0)">
+              <img src="assets/hero-1.svg" alt="Artista 3 foto 2" class="artist-photo" style="display:none;" onclick="swapArtistPhoto('artista3', 1)">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section playlist">
+      <div class="container">
+        <h3>Escucha la música del evento</h3>
+        <div class="playlist-grid">
+          <div class="playlist-card">
+            <h4>Playlist de los artistas</h4>
+            <iframe src="https://open.spotify.com/embed/playlist/PLACEHOLDER_ARTISTAS" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+          </div>
+          <div class="playlist-card">
+            <h4>Playlist Rizoma</h4>
+            <iframe src="https://open.spotify.com/embed/playlist/PLACEHOLDER_RIZOMA" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>Rizoma</strong>
+        <p class="muted">Celebrando la Primavera — comunidad & naturaleza</p>
+      </div>
+      <div class="footer-right">
+        <p class="muted">
+          <a href="https://www.instagram.com/rizoma.moron/" target="_blank" rel="noopener noreferrer" class="social-link">Síguenos en Instagram</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Intercambio de fotos por artista
+    function swapArtistPhoto(artistId, photoIdx) {
+      const card = document.getElementById(artistId);
+      const photos = card.querySelectorAll('.artist-photo');
+      photos.forEach((img, idx) => {
+        img.style.display = idx === 1 - photoIdx ? 'none' : 'block';
+      });
+    }
+  </script>
+</body>
+</html>
