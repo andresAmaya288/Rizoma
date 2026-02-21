@@ -44,7 +44,7 @@
             <fieldset class="form-section">
               <legend>Modelo</legend>
               <div class="model-grid">
-                <label class="model-card">
+                <label class="model-card" data-model="modelo-1">
                   <input type="radio" name="model" value="modelo-1" required>
                   <div class="model-preview">
                     <div class="preview-front">Frente</div>
@@ -52,7 +52,7 @@
                   </div>
                   <span>Modelo 1</span>
                 </label>
-                <label class="model-card">
+                <label class="model-card" data-model="modelo-2">
                   <input type="radio" name="model" value="modelo-2">
                   <div class="model-preview">
                     <div class="preview-front">Frente</div>
@@ -60,7 +60,7 @@
                   </div>
                   <span>Modelo 2</span>
                 </label>
-                <label class="model-card">
+                <label class="model-card" data-model="modelo-3">
                   <input type="radio" name="model" value="modelo-3">
                   <div class="model-preview">
                     <div class="preview-front">Frente</div>
@@ -68,6 +68,20 @@
                   </div>
                   <span>Modelo 3</span>
                 </label>
+              </div>
+              <!-- Visor expandido de modelo seleccionado -->
+              <div id="modelViewer" class="model-viewer" style="display:none;margin-top:2rem;">
+                <button type="button" class="close-viewer" onclick="document.getElementById('modelViewer').style.display='none'">×</button>
+                <div class="viewer-content">
+                  <div class="viewer-side">
+                    <h5>Frente</h5>
+                    <div class="viewer-image">Frente</div>
+                  </div>
+                  <div class="viewer-side">
+                    <h5>Espalda</h5>
+                    <div class="viewer-image">Espalda</div>
+                  </div>
+                </div>
               </div>
             </fieldset>
 
@@ -103,11 +117,7 @@
               </div>
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" required placeholder="tu@email.com">
-              </div>
-              <div class="form-group">
-                <label for="phone">Teléfono (opcional)</label>
-                <input type="tel" id="phone" name="phone" placeholder="Tu teléfono">
+                <input type="email" id="email" name="email" required placeholder="tu@email.com" title="Introduce un email válido">
               </div>
             </fieldset>
 
@@ -147,9 +157,58 @@
     // ============ FORMULARIO CAMISETAS ============
     const tshirtForm = document.getElementById('tshirtForm');
     const confirmationMessage = document.getElementById('confirmationMessage');
+    const modelCards = document.querySelectorAll('.model-card');
+    const modelViewer = document.getElementById('modelViewer');
+
+    // Evento para abrir visor de modelo
+    modelCards.forEach(card => {
+      card.addEventListener('click', (e) => {
+        // No abrir si es un clic en el radio input
+        if (e.target.type === 'radio') return;
+        
+        const modelName = card.dataset.model;
+        const modelLabel = card.querySelector('span').textContent;
+        
+        // Actualizar contenido del visor
+        const viewer = `
+          <div class="viewer-content">
+            <div class="viewer-side">
+              <h5>Frente - ${modelLabel}</h5>
+              <div class="viewer-image">Frente del modelo</div>
+            </div>
+            <div class="viewer-side">
+              <h5>Espalda - ${modelLabel}</h5>
+              <div class="viewer-image">Espalda del modelo</div>
+            </div>
+          </div>
+        `;
+        
+        modelViewer.innerHTML = `
+          <button type="button" class="close-viewer" onclick="document.getElementById('modelViewer').style.display='none'">×</button>
+          ${viewer}
+        `;
+        modelViewer.style.display = 'block';
+      });
+    });
+
+    // Validación de email
+    const emailInput = document.getElementById('email');
+    emailInput.addEventListener('change', () => {
+      if (!emailInput.validity.valid) {
+        emailInput.classList.add('error');
+      } else {
+        emailInput.classList.remove('error');
+      }
+    });
 
     tshirtForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+
+      // Validar email
+      if (!emailInput.validity.valid) {
+        alert('Por favor introduce un email válido');
+        return;
+      }
 
       const formData = {
         timestamp: new Date().toISOString(),
@@ -158,7 +217,6 @@
         quantity: document.getElementById('quantity').value,
         name: document.getElementById('name').value,
         email: document.getElementById('email').value,
-        phone: document.getElementById('phone').value,
       };
 
       // URL del Google Apps Script (reemplaza con tu URL)
