@@ -1,45 +1,60 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
+<svg width="120" height="120" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
-      <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-opacity="0.12"/>
-    </filter>
+    <style>
+      .branch {
+        fill: none;
+        stroke: #6aa84f;
+        stroke-width: 10;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .node {
+        fill: #ff5c7a;
+      }
+
+      .node-secondary {
+        fill: #6aa84f;
+      }
+    </style>
   </defs>
-  
-  <!-- Fondo limpio -->
-  <rect width="120" height="120" rx="18" fill="#fbfbf8" stroke="#e8e8e4" stroke-width="1"/>
-  
-  <!-- Concepto: raíces/rizoma que se ramifican (heterogéneo, sin jerarquía) -->
-  <!-- Raíz principal (diagonal, dinámica) -->
-  <g filter="url(#shadow)">
-    <!-- Tronco central -->
-    <path d="M 60 20 Q 62 45, 60 70" stroke="#6aa84f" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-    
-    <!-- Ramificación izquierda superior -->
-    <path d="M 60 35 Q 40 35, 28 30" stroke="#9bd655" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.9"/>
-    
-    <!-- Ramificación derecha superior -->
-    <path d="M 60 40 Q 75 38, 90 32" stroke="#c9e5b1" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.85"/>
-    
-    <!-- Ramificación izquierda media -->
-    <path d="M 60 55 Q 35 60, 22 70" stroke="#8fb862" stroke-width="2.8" fill="none" stroke-linecap="round" opacity="0.88"/>
-    
-    <!-- Ramificación derecha media -->
-    <path d="M 60 60 Q 80 65, 98 75" stroke="#b8d88f" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.85"/>
-    
-    <!-- Ramificación izquierda inferior (roja - acento rebelde) -->
-    <path d="M 60 75 Q 38 85, 25 98" stroke="#e74c5c" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.88"/>
-    
-    <!-- Ramificación derecha inferior -->
-    <path d="M 60 78 Q 78 88, 95 102" stroke="#9bd655" stroke-width="2.5" fill="none" stroke-linecap="round" opacity="0.86"/>
-  </g>
-  
-  <!-- Puntos/nodos en las puntas de las ramificaciones (pequeños círculos) -->
-  <g fill="#6aa84f" filter="url(#shadow)">
-    <circle cx="28" cy="30" r="2.5" fill="#9bd655" opacity="0.95"/>
-    <circle cx="90" cy="32" r="2.5" fill="#c9e5b1" opacity="0.88"/>
-    <circle cx="22" cy="70" r="2.5" fill="#8fb862" opacity="0.9"/>
-    <circle cx="98" cy="75" r="2.5" fill="#b8d88f" opacity="0.86"/>
-    <circle cx="25" cy="98" r="2.5" fill="#e74c5c" opacity="0.92"/>
-    <circle cx="95" cy="102" r="2.5" fill="#9bd655" opacity="0.88"/>
-  </g>
+
+  <!-- Fondo -->
+  <rect width="100%" height="100%" fill="#fbfbf8" />
+
+  <!-- Forma contenedora (colectivo / unidad) -->
+  <circle cx="250" cy="250" r="190"
+          fill="none"
+          stroke="#6b6b6b"
+          stroke-width="6"
+          opacity="0.25" />
+
+  <!-- Rizoma central -->
+  <path class="branch"
+        d="M250 140
+           C220 190, 180 220, 160 260
+           C200 250, 230 270, 250 300
+           C270 330, 310 350, 340 360" />
+
+  <path class="branch"
+        d="M250 140
+           C280 190, 320 220, 340 260
+           C300 250, 270 270, 250 300" />
+
+  <path class="branch"
+        d="M250 300
+           C220 340, 190 360, 160 360" />
+
+  <path class="branch"
+        d="M250 300
+           C280 340, 310 360, 340 360" />
+
+  <!-- Nodos principales -->
+  <circle cx="250" cy="140" r="16" class="node" />
+  <circle cx="160" cy="260" r="14" class="node-secondary" />
+  <circle cx="340" cy="260" r="14" class="node-secondary" />
+  <circle cx="250" cy="300" r="18" class="node" />
+  <circle cx="160" cy="360" r="14" class="node-secondary" />
+  <circle cx="340" cy="360" r="14" class="node-secondary" />
+
 </svg>
