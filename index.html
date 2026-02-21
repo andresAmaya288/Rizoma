@@ -15,7 +15,7 @@
       </div>
       <nav class="nav">
         <a href="#about">Quiénes somos</a>
-        <a href="#fiesta">La fiesta</a>
+        <a href="#camisetas">Camisetas</a>
         <a href="#news">Novedades</a>
       </nav>
     </div>
@@ -48,27 +48,97 @@
       </div>
     </section>
 
-    <section id="fiesta" class="section fiesta">
+    <section id="camisetas" class="section camisetas">
       <div class="container">
-        <h3>La Fiesta de la Primavera</h3>
-        <p><strong>4 de Abril de 2026 — Módulo Azul</strong></p>
-        <p>Si algo de esto resuena contigo o si simplemente tienes curiosidad, o si te apetece pasar un buen rato con buena gente, estáis invitados a formar parte del florecimiento de esta plataforma. Una jornada para celebrar los lazos comunitarios: mercados, música en vivo, talleres y una atmósfera que mezcla lo minimal con lo orgánico.</p>
-        <div class="card-grid">
-          <article class="card">
-            <img src="assets/hero-1.svg" alt="Taller" />
-            <h4>Talleres</h4>
-            <p class="placeholder">PLACEHOLDER: Descripción de talleres — contenido temporal.</p>
-          </article>
-          <article class="card">
-            <img src="assets/hero-1.svg" alt="Mercado" />
-            <h4>Mercado</h4>
-            <p class="placeholder">PLACEHOLDER: Información del mercado — reemplazar luego.</p>
-          </article>
-          <article class="card">
-            <img src="assets/hero-1.svg" alt="Música" />
-            <h4>Música en vivo</h4>
-            <p class="placeholder">PLACEHOLDER: Line-up y horarios — demo.</p>
-          </article>
+        <h3>Reserva de Camisetas</h3>
+        <p>Personaliza tu reserva: elige modelo, talla y cantidad. Completa el formulario y recibirás confirmación de tu pedido.</p>
+        
+        <div class="tshirt-form-wrapper">
+          <form id="tshirtForm" class="tshirt-form">
+            <!-- Selección de modelo -->
+            <fieldset class="form-section">
+              <legend>Modelo</legend>
+              <div class="model-grid">
+                <label class="model-card">
+                  <input type="radio" name="model" value="modelo-1" required>
+                  <div class="model-preview">
+                    <div class="preview-front">Frente</div>
+                    <div class="preview-back">Espalda</div>
+                  </div>
+                  <span>Modelo 1</span>
+                </label>
+                <label class="model-card">
+                  <input type="radio" name="model" value="modelo-2">
+                  <div class="model-preview">
+                    <div class="preview-front">Frente</div>
+                    <div class="preview-back">Espalda</div>
+                  </div>
+                  <span>Modelo 2</span>
+                </label>
+                <label class="model-card">
+                  <input type="radio" name="model" value="modelo-3">
+                  <div class="model-preview">
+                    <div class="preview-front">Frente</div>
+                    <div class="preview-back">Espalda</div>
+                  </div>
+                  <span>Modelo 3</span>
+                </label>
+              </div>
+            </fieldset>
+
+            <!-- Talla y cantidad -->
+            <fieldset class="form-section">
+              <legend>Detalles del pedido</legend>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="size">Talla</label>
+                  <select id="size" name="size" required>
+                    <option value="">Selecciona talla</option>
+                    <option value="XS">XS</option>
+                    <option value="S">S</option>
+                    <option value="M">M</option>
+                    <option value="L">L</option>
+                    <option value="XL">XL</option>
+                    <option value="XXL">XXL</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="quantity">Cantidad</label>
+                  <input type="number" id="quantity" name="quantity" min="1" max="50" value="1" required>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Datos personales -->
+            <fieldset class="form-section">
+              <legend>Tus datos</legend>
+              <div class="form-group">
+                <label for="name">Nombre completo</label>
+                <input type="text" id="name" name="name" required placeholder="Tu nombre">
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="tu@email.com">
+              </div>
+              <div class="form-group">
+                <label for="phone">Teléfono (opcional)</label>
+                <input type="tel" id="phone" name="phone" placeholder="Tu teléfono">
+              </div>
+            </fieldset>
+
+            <button type="submit" class="submit-btn">Confirmar reserva</button>
+          </form>
+
+          <!-- Mensaje de confirmación (oculto por defecto) -->
+          <div id="confirmationMessage" class="confirmation-message" style="display:none;">
+            <div class="confirmation-content">
+              <h4>✓ Reserva confirmada</h4>
+              <p>Tu pedido ha sido registrado correctamente.</p>
+              <p><strong id="confirmationDetails"></strong></p>
+              <p class="muted">Recibirás más detalles en tu email.</p>
+              <button class="reset-btn" onclick="document.getElementById('tshirtForm').reset(); document.getElementById('confirmationMessage').style.display='none'; document.getElementById('tshirtForm').style.display='block';">Hacer otra reserva</button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -114,6 +184,7 @@
   </footer>
 
   <script>
+    // ============ TOGGLE ABOUT ============
     const toggleBtn = document.getElementById('toggleAbout');
     const aboutContent = document.getElementById('aboutContent');
     
@@ -121,6 +192,47 @@
       const isHidden = aboutContent.style.display === 'none';
       aboutContent.style.display = isHidden ? 'block' : 'none';
       toggleBtn.textContent = isHidden ? 'Leer menos' : 'Leer más';
+    });
+
+    // ============ FORMULARIO CAMISETAS ============
+    const tshirtForm = document.getElementById('tshirtForm');
+    const confirmationMessage = document.getElementById('confirmationMessage');
+
+    tshirtForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = {
+        timestamp: new Date().toISOString(),
+        model: document.querySelector('input[name="model"]:checked').value,
+        size: document.getElementById('size').value,
+        quantity: document.getElementById('quantity').value,
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+      };
+
+      // URL del Google Apps Script (reemplaza con tu URL)
+      const SCRIPT_URL = 'https://script.google.com/macros/d/YOUR_SCRIPT_ID/usercallback';
+
+      try {
+        // Envío a Google Sheets
+        const response = await fetch(SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: JSON.stringify(formData),
+        });
+
+        // Mostrar confirmación
+        document.getElementById('confirmationDetails').textContent = 
+          `${formData.quantity} camiseta(s) - Modelo ${formData.model.split('-')[1]} - Talla ${formData.size}`;
+        
+        tshirtForm.style.display = 'none';
+        confirmationMessage.style.display = 'block';
+
+      } catch (error) {
+        console.error('Error:', error);
+        alert('Hubo un error en la reserva. Por favor intenta de nuevo.');
+      }
     });
   </script>
 </body>
