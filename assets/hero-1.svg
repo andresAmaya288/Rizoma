@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#eaf6ea" />
+      <stop offset="1" stop-color="#fff6f8" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#g)"/>
+  <g transform="translate(50,80)" fill="#c9e5b1" opacity="0.9">
+    <ellipse cx="200" cy="200" rx="180" ry="120"/>
+    <ellipse cx="400" cy="260" rx="220" ry="140"/>
+  </g>
+  <g transform="translate(520,60)">
+    <path d="M40 180 C60 90, 160 90, 180 180 C180 220, 100 240, 40 180 Z" fill="#ffd7de" opacity="0.85"/>
+  </g>
+  <text x="40" y="40" font-family="sans-serif" font-size="22" fill="#274e13">Rizoma — Primavera</text>
+</svg>
