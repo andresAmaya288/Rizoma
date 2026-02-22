@@ -19,8 +19,8 @@ El formulario de camisetas en la web está conectado a **Google Sheets** mediant
 2. Reemplaza el código con esto:
 
 ```javascript
-const SHEET_ID = "TU_SHEET_ID_AQUI"; // Reemplaza con tu Sheet ID
-const SHEET_NAME = "Sheet1";
+const SHEET_ID = "1GDRpgmOMjn3AxIrTxEdOioHHKvAwRrj17px282fssjg"; // Reemplaza con tu Sheet ID
+const SHEET_NAME = "Datos Reservas";
 
 function doPost(e) {
   try {
